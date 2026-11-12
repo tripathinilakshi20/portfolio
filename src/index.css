@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: rgba(30, 43, 77, 0.6);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #080B18;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1E2B4D;
+    border-radius: 4px;
+    border: 1px solid rgba(34, 211, 238, 0.2);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8B5CF6;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: rgba(14, 22, 43, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(34, 211, 238, 0.12);
+  }
+
+  .glass-card-hover {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass-card-hover:hover {
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.2), 0 0 15px -3px rgba(34, 211, 238, 0.15);
+    transform: translateY(-3px);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 12px rgba(34, 211, 238, 0.5);
+  }
+
+  .text-glow-purple {
+    text-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
+  }
+
+  .cyber-border-corner {
+    position: relative;
+  }
+  .cyber-border-corner::before,
+  .cyber-border-corner::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-color: #22D3EE;
+    pointer-events: none;
+  }
+  .cyber-border-corner::before {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid #22D3EE;
+    border-left: 2px solid #22D3EE;
+  }
+  .cyber-border-corner::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 2px solid #8B5CF6;
+    border-right: 2px solid #8B5CF6;
+  }
+}
+
+
+/* Portfolio polish: accessible controls, form states and optional light theme */
+.portfolio-app {
+  --page-bg: #080b18;
+  --panel-bg: rgba(14, 22, 43, .78);
+  --surface-bg: #0e162b;
+  --primary-text: #f8fafc;
+  --muted-text: #94a3b8;
+  min-height: 100vh;
+  background: var(--page-bg);
+  color: var(--primary-text);
+  transition: background-color .25s ease, color .25s ease;
+}
+.portfolio-app.theme-light {
+  --page-bg: #f5f7fb;
+  --panel-bg: rgba(255,255,255,.9);
+  --surface-bg: #ffffff;
+  --primary-text: #172033;
+  --muted-text: #536179;
+  color: var(--primary-text);
+  background: var(--page-bg);
+}
+.portfolio-app.theme-light .text-white,
+.portfolio-app.theme-light .text-brand-white { color: #172033 !important; }
+.portfolio-app.theme-light .text-brand-muted { color: #536179 !important; }
+.portfolio-app.theme-light .bg-navy-deep,
+.portfolio-app.theme-light .bg-navy-dark { background-color: #f5f7fb !important; }
+.portfolio-app.theme-light .bg-navy-card,
+.portfolio-app.theme-light .bg-navy-card\/60,
+.portfolio-app.theme-light .bg-navy-card\/80,
+.portfolio-app.theme-light .bg-navy-card\/95 { background-color: rgba(255,255,255,.92) !important; }
+.portfolio-app.theme-light .bg-navy-surface,
+.portfolio-app.theme-light .bg-navy-surface\/40,
+.portfolio-app.theme-light .bg-navy-surface\/50,
+.portfolio-app.theme-light .bg-navy-surface\/60,
+.portfolio-app.theme-light .bg-navy-surface\/70 { background-color: #edf2f8 !important; }
+.portfolio-app.theme-light .glass-card {
+  background: rgba(255,255,255,.88);
+  border-color: rgba(100,116,139,.2);
+  box-shadow: 0 12px 36px rgba(15,23,42,.06);
+}
+.portfolio-app.theme-light .border-navy-border { border-color: #d9e1ec !important; }
+.portfolio-app.theme-light .border-navy-border\/50,
+.portfolio-app.theme-light .border-navy-border\/60,
+.portfolio-app.theme-light .border-navy-border\/70,
+.portfolio-app.theme-light .border-navy-border\/80 { border-color: #e1e7ef !important; }
+.portfolio-app.theme-light input,
+.portfolio-app.theme-light textarea { color: #172033 !important; background: #fff !important; }
+.portfolio-app.theme-light input::placeholder,
+.portfolio-app.theme-light textarea::placeholder { color: #8290a5 !important; }
+.portfolio-app.theme-light header { background-color: rgba(255,255,255,.9); border-color: #dce3ed; }
+.portfolio-app.theme-light .text-electric-cyan { color: #087e98 !important; }
+.portfolio-app.theme-light .text-electric-purple { color: #7041c4 !important; }
+.portfolio-app.theme-light .bg-electric-cyan { color: #09202a; }
+.portfolio-app.theme-light .section-eyebrow {
+  color: #087e98;
+  background: rgba(8,126,152,.08);
+  border: 1px solid rgba(8,126,152,.2);
+}
+.portfolio-app .section-eyebrow {
+  color: #22d3ee;
+  background: rgba(34,211,238,.08);
+  border: 1px solid rgba(34,211,238,.2);
+}
+.form-label {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  color: var(--muted-text);
+  font-size: .75rem;
+  font-weight: 600;
+}
+.form-input {
+  width: 100%;
+  border: 1px solid rgba(148,163,184,.24);
+  border-radius: .75rem;
+  background: rgba(8,11,24,.72);
+  color: #f8fafc;
+  padding: .8rem .9rem;
+  font: inherit;
+  font-size: .875rem;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.form-input:focus {
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 3px rgba(34,211,238,.12);
+}
+.primary-button, .secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  border-radius: .75rem;
+  padding: .75rem 1rem;
+  font-size: .8rem;
+  font-weight: 700;
+  transition: transform .2s ease, background-color .2s ease, border-color .2s ease;
+}
+.primary-button {
+  background: linear-gradient(110deg,#22d3ee,#8b5cf6);
+  color: #07111f;
+}
+.primary-button:hover { transform: translateY(-2px); filter: brightness(1.06); }
+.secondary-button {
+  border: 1px solid rgba(148,163,184,.25);
+  background: rgba(148,163,184,.08);
+  color: var(--primary-text);
+}
+.secondary-button:hover { border-color: #22d3ee; }
+.theme-toggle { flex: 0 0 auto; }
+:focus-visible { outline: 2px solid #22d3ee; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
